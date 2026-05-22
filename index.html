@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DHAS — Build & Feature Dashboard</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>DHAS</h1>
+      <p class="tagline">Warehouse Control System · Build &amp; Feature Dashboard</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- ─────────── Latest Build ─────────── -->
+    <section id="build-summary" class="card">
+      <h2>Latest Build</h2>
+      <div id="build-content" class="build-content">
+        <p class="muted">Loading test results…</p>
+      </div>
+    </section>
+
+    <!-- ─────────── Feature Status ─────────── -->
+    <section id="features" class="card">
+      <h2>Feature Delivery</h2>
+      <p class="muted" id="features-updated"></p>
+      <div id="features-content">
+        <p class="muted">Loading feature list…</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p class="muted small">
+        DHAS dashboard · auto-generated from CI runs ·
+        <a href="https://github.com/swankham88/DHAS" target="_blank" rel="noopener">repository</a>
+      </p>
+    </footer>
+  </main>
+
+  <script>
+    // Render the latest test results card. The JSON file is updated by
+    // GitHub Actions on every successful master build.
+    async function loadBuild() {
+      const target = document.getElementById('build-content');
+      try {
+        // cache-bust so we never show a stale build after a fresh deploy
+        const resp = await fetch(`./test-results.json?_=${Date.now()}`);
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const data = await resp.json();
+
+        const ok = data.failed === 0;
+        const statusClass = ok ? 'pass' : 'fail';
+        const statusLabel = ok ? 'PASSING' : 'FAILING';
+
+        const passedPct = data.total > 0 ? Math.round((data.passed / data.total) * 100) : 0;
+
+        target.innerHTML = `
+          <div class="status-row">
+            <span class="status-badge ${statusClass}">${statusLabel}</span>
+            <span class="status-meta">${data.passed} / ${data.total} tests passing (${passedPct}%)</span>
+          </div>
+          <div class="metric-grid">
+            <div class="metric"><span class="metric-num pass-num">${data.passed}</span><span class="metric-label">Passed</span></div>
+            <div class="metric"><span class="metric-num fail-num">${data.failed}</span><span class="metric-label">Failed</span></div>
+            <div class="metric"><span class="metric-num">${data.total}</span><span class="metric-label">Total</span></div>
+          </div>
+          <dl class="run-info">
+            <dt>Last run</dt><dd>${new Date(data.lastRun).toLocaleString()}</dd>
+            <dt>Commit</dt><dd><code>${data.commitShort}</code></dd>
+            <dt>Branch</dt><dd>${data.branch}</dd>
+            <dt>Run</dt><dd><a href="${data.runUrl}" target="_blank" rel="noopener">view on GitHub →</a></dd>
+          </dl>
+        `;
+      } catch (err) {
+        target.innerHTML = `<p class="muted">No build results available yet.</p>`;
+      }
+    }
+
+    // Render the curated feature list. We keep this in a separate JSON file
+    // so non-technical stakeholders can read the "what's delivered" view
+    // without scrolling commit logs.
+    async function loadFeatures() {
+      const updatedEl = document.getElementById('features-updated');
+      const target = document.getElementById('features-content');
+      try {
+        const resp = await fetch(`./features.json?_=${Date.now()}`);
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const data = await resp.json();
+
+        updatedEl.textContent = data.updated ? `Updated ${data.updated}` : '';
+
+        const STATUS = {
+          done:        { icon: '✓', cls: 'done',        label: 'Delivered' },
+          'in-progress': { icon: '◐', cls: 'in-progress', label: 'In progress' },
+          planned:     { icon: '○', cls: 'planned',     label: 'Planned' },
+          blocked:     { icon: '⚠', cls: 'blocked',     label: 'Blocked' },
+        };
+
+        target.innerHTML = data.categories.map(cat => `
+          <div class="category">
+            <h3>${cat.name}</h3>
+            <ul class="feature-list">
+              ${cat.items.map(item => {
+                const s = STATUS[item.status] ?? STATUS.planned;
+                return `
+                  <li class="feature ${s.cls}">
+                    <span class="feature-icon" title="${s.label}">${s.icon}</span>
+                    <div class="feature-body">
+                      <div class="feature-title">${item.title}</div>
+                      ${item.note ? `<div class="feature-note">${item.note}</div>` : ''}
+                    </div>
+                    ${item.date ? `<span class="feature-date">${item.date}</span>` : ''}
+                  </li>`;
+              }).join('')}
+            </ul>
+          </div>
+        `).join('');
+      } catch (err) {
+        target.innerHTML = `<p class="muted">No feature list available.</p>`;
+      }
+    }
+
+    loadBuild();
+    loadFeatures();
+  </script>
+</body>
+</html>

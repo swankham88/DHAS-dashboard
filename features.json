@@ -1,0 +1,192 @@
+{
+  "updated": "2026-05-22",
+  "categories": [
+    {
+      "name": "Marketplace Integration",
+      "items": [
+        {
+          "title": "TikTok Shop — OAuth, order sync, token refresh",
+          "status": "done",
+          "date": "2026-05",
+          "note": "Auto-refresh tokens before 5-minute expiry window."
+        },
+        {
+          "title": "Lazada — OAuth, order sync with item enrichment",
+          "status": "done",
+          "date": "2026-05",
+          "note": "Pulls tracking number + shipping provider via /orders/items/get."
+        },
+        {
+          "title": "Shopee — OAuth, order sync (new sandbox host)",
+          "status": "done",
+          "date": "2026-05",
+          "note": "Migrated to openplatform.sandbox.test-stable.shopee.sg endpoint."
+        },
+        {
+          "title": "LINE Shopping integration",
+          "status": "planned",
+          "note": "Pending scope confirmation with customer."
+        },
+        {
+          "title": "Facebook Shops integration",
+          "status": "planned",
+          "note": "Pending scope confirmation with customer."
+        }
+      ]
+    },
+    {
+      "name": "Order Sync Engine",
+      "items": [
+        {
+          "title": "Exclude-status filter (per marketplace)",
+          "status": "done",
+          "date": "2026-05",
+          "note": "Operators can exclude statuses like UNPAID / CANCELLED / COMPLETED from sync."
+        },
+        {
+          "title": "update_time cursor for status transitions",
+          "status": "done",
+          "date": "2026-05"
+        },
+        {
+          "title": "Background poller (5-min interval, configurable per marketplace)",
+          "status": "done",
+          "date": "2026-05"
+        },
+        {
+          "title": "Sync job history with success / failure tracking",
+          "status": "done",
+          "date": "2026-05"
+        }
+      ]
+    },
+    {
+      "name": "WMS Integration",
+      "items": [
+        {
+          "title": "POST /api/wms/shipments — single & batch upload",
+          "status": "done",
+          "date": "2026-05",
+          "note": "Accepts both JSON object and array; per-item partial success in batch mode."
+        },
+        {
+          "title": "PlatformCode-based shop lookup",
+          "status": "done",
+          "date": "2026-05",
+          "note": "Operator-defined codes (A–Z, 0–9, _ , -) for external systems to reference shops."
+        },
+        {
+          "title": "OrderShipments — multi-package per order (1:N)",
+          "status": "done",
+          "date": "2026-05"
+        },
+        {
+          "title": "Optional tracking number (pre-tracking workflow support)",
+          "status": "done",
+          "date": "2026-05"
+        },
+        {
+          "title": "API-key gate (X-Wms-Api-Key header)",
+          "status": "done",
+          "date": "2026-05"
+        }
+      ]
+    },
+    {
+      "name": "Shipping Label Print",
+      "items": [
+        {
+          "title": "TikTok — print label via packages/{id}/shipping_documents",
+          "status": "done",
+          "date": "2026-05",
+          "note": "Single order, tested and working in production."
+        },
+        {
+          "title": "Shopee — 3-step async PDF flow",
+          "status": "done",
+          "date": "2026-05",
+          "note": "Create → poll READY → download binary PDF."
+        },
+        {
+          "title": "Lazada — print label via /order/document/get",
+          "status": "blocked",
+          "note": "Waiting on Lazada Open Platform 'Apply Unmask' approval for full PII access."
+        },
+        {
+          "title": "Batch label print (combined PDF)",
+          "status": "in-progress",
+          "note": "Backend endpoint ready; UI multi-select pending."
+        },
+        {
+          "title": "Auto-dispatch to network printer",
+          "status": "planned",
+          "note": "Phase 2 — adapter API ready, dispatcher layer pending."
+        }
+      ]
+    },
+    {
+      "name": "Web Application",
+      "items": [
+        {
+          "title": "JWT authentication (login + role-based)",
+          "status": "done",
+          "date": "2026-05"
+        },
+        {
+          "title": "Orders list with filters + detail modal",
+          "status": "done",
+          "date": "2026-05"
+        },
+        {
+          "title": "Marketplace Settings — exclude-status chip selector",
+          "status": "done",
+          "date": "2026-05"
+        },
+        {
+          "title": "Shops dashboard with token health monitor",
+          "status": "done",
+          "date": "2026-05"
+        },
+        {
+          "title": "Shipment cards in Order detail",
+          "status": "done",
+          "date": "2026-05"
+        }
+      ]
+    },
+    {
+      "name": "Quality & Operations",
+      "items": [
+        {
+          "title": "Unit test suite (xUnit + Moq + InMemory DB)",
+          "status": "done",
+          "date": "2026-05",
+          "note": "Signers, OrderSyncService, WmsController, AuthController."
+        },
+        {
+          "title": "GitHub Actions CI — test on every push & PR",
+          "status": "done",
+          "date": "2026-05"
+        },
+        {
+          "title": "Public build & feature dashboard (this page)",
+          "status": "done",
+          "date": "2026-05"
+        },
+        {
+          "title": "Production deployment via nginx + systemd",
+          "status": "done",
+          "date": "2026-05"
+        },
+        {
+          "title": "Coverage gate in CI",
+          "status": "planned"
+        },
+        {
+          "title": "Go-live readiness — 25 June 2026",
+          "status": "in-progress"
+        }
+      ]
+    }
+  ]
+}
