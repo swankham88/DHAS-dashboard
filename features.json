@@ -17,10 +17,10 @@
           "note": "Pulls tracking number + shipping provider via /orders/items/get."
         },
         {
-          "title": "Shopee — OAuth, order sync (new sandbox host)",
+          "title": "Shopee — OAuth, order sync (production live)",
           "status": "done",
           "date": "2026-05",
-          "note": "Migrated to openplatform.sandbox.test-stable.shopee.sg endpoint."
+          "note": "App approved Online by Shopee (live partner_id 2034541). Production credentials deployed via appsettings.Production.json on the server."
         },
         {
           "title": "LINE Shopping integration",
@@ -105,7 +105,7 @@
           "title": "Shopee — 3-step async PDF flow",
           "status": "done",
           "date": "2026-05",
-          "note": "Create → poll READY → download binary PDF."
+          "note": "Create → poll READY → download binary PDF. Available on live production after Shopee app go-live."
         },
         {
           "title": "Lazada — print label via /order/document/get",

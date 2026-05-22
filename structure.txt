@@ -5,36 +5,36 @@ Projects\DHAS                                                                   
 ├── scripts/                                                                            100%
 │   └── init.sql
 │
-├── src/                                                                                85%
-│   ├── DHAS.Domain/            ← Entities, Enums, Domain Events                        95%
+├── src/                                                                                
+│   ├── DHAS.Domain/            ← Entities, Enums, Domain Events                       
 │   │   ├── Common/             (BaseEntity, BaseDomainEvent)                           100%
-│   │   ├── Entities/           (Device, DataPoint, DataLog)                            90%
-│   │   └── Enums/              (DeviceProtocol, DeviceStatus)                          100%
+│   │   ├── Entities/           (Device, DataPoint, DataLog)                            70%
+│   │   └── Enums/              (DeviceProtocol, DeviceStatus)                          90%
 │   │
-│   ├── DHAS.Application/       ← Business Logic, CQRS, MediatR                         70%
-│   │   ├── Common/Interfaces/  (IApplicationDbContext, ICurrentUserService)            100%
+│   ├── DHAS.Application/       ← Business Logic, CQRS, MediatR                         
+│   │   ├── Common/Interfaces/  (IApplicationDbContext, ICurrentUserService)            80%
 │   │   ├── Common/Behaviours/  (ValidationBehaviour)                                   100%
-│   │   ├── Common/Exceptions/  (NotFoundException, ValidationException)                100%
-│   │   ├── Common/Models/      (PaginatedList)                                         100%
+│   │   ├── Common/Exceptions/  (NotFoundException, ValidationException)                80%
+│   │   ├── Common/Models/      (PaginatedList)                                         80%
 │   │   └── DependencyInjection.cs                                                      100%
 │   │
 │   ├── DHAS.Infrastructure/    ← EF Core + PostgreSQL, Services                        90%
-│   │   ├── Persistence/        (ApplicationDbContext, Configurations)                  95%
-│   │   ├── Services/           (CurrentUserService)                                    100%
+│   │   ├── Persistence/        (ApplicationDbContext, Configurations)                  90%
+│   │   ├── Services/           (CurrentUserService)                                    80%
 │   │   └── DependencyInjection.cs                                                      100%
 │   │
 │   └── DHAS.API/               ← ASP.NET Core Web API                                  85%
-│       ├── Controllers/        (DevicesController)                                     80%
+│       ├── Controllers/        (DevicesController)                                     70%
 │       ├── Middleware/         (ExceptionHandlingMiddleware)                           100%
 │       ├── Program.cs          (JWT, Serilog, Swagger, CORS)                           100%
 │       └── appsettings.json                                                            100%
 │
 └── frontend/dhas-web/          ← React + Vite + TailwindCSS                            75%
     ├── src/
-    │   ├── pages/              (Dashboard, Devices, DataMonitor, Login, Settings)     80%
-    │   ├── components/layout/  (MainLayout)                                            100%
-    │   ├── services/           (api.ts, deviceService.ts)                              85%
+    │   ├── pages/              (Dashboard, Devices, DataMonitor, Login, Settings)     60%
+    │   ├── components/layout/  (MainLayout)                                            80%
+    │   ├── services/           (api.ts, deviceService.ts)                              70%
     │   ├── store/              (authStore — Zustand + persist)                         100%
-    │   └── types/              (Device, DataPoint, DataLog)                            100%
+    │   └── types/              (Device, DataPoint, DataLog)                            60%
     ├── tailwind.config.js                                                              100%
     └── vite.config.ts          (proxy → API port 5000)                                 100%
