@@ -23,6 +23,12 @@
       </div>
     </section>
 
+    <!-- ─────────── Project Structure ─────────── -->
+    <section id="structure" class="card">
+      <h2>Project Structure</h2>
+      <pre id="structure-content" class="tree" aria-busy="true">Loading…</pre>
+    </section>
+
     <!-- ─────────── Feature Status ─────────── -->
     <section id="features" class="card">
       <h2>Feature Delivery</h2>
@@ -123,7 +129,39 @@
       }
     }
 
+    // Render the project structure tree. The source is a plain-text file so
+    // anyone on the team can edit it without touching HTML/JS. We highlight
+    // the "← annotation" comment portion of each line in a softer color so
+    // the tree characters stay readable as the dominant element.
+    async function loadStructure() {
+      const target = document.getElementById('structure-content');
+      try {
+        const resp = await fetch(`./structure.txt?_=${Date.now()}`);
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const raw = await resp.text();
+        const html = raw.split('\n').map(line => {
+          const idx = line.indexOf(' ← ');
+          if (idx === -1) return escapeHtml(line);
+          return escapeHtml(line.slice(0, idx))
+               + '<span class="tree-annotation">'
+               + escapeHtml(line.slice(idx))
+               + '</span>';
+        }).join('\n');
+        target.innerHTML = html;
+        target.removeAttribute('aria-busy');
+      } catch (err) {
+        target.textContent = 'Could not load project structure.';
+      }
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/[&<>"']/g, c => (
+        { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]
+      ));
+    }
+
     loadBuild();
+    loadStructure();
     loadFeatures();
   </script>
 </body>

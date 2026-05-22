@@ -1,0 +1,40 @@
+Projects\DHAS
+├── DHAS.sln
+├── docker-compose.yml          ← PostgreSQL + Redis + pgAdmin
+├── .gitignore
+├── scripts/
+│   └── init.sql
+│
+├── src/
+│   ├── DHAS.Domain/            ← Entities, Enums, Domain Events
+│   │   ├── Common/             (BaseEntity, BaseDomainEvent)
+│   │   ├── Entities/           (Device, DataPoint, DataLog)
+│   │   └── Enums/              (DeviceProtocol, DeviceStatus)
+│   │
+│   ├── DHAS.Application/       ← Business Logic, CQRS, MediatR
+│   │   ├── Common/Interfaces/  (IApplicationDbContext, ICurrentUserService)
+│   │   ├── Common/Behaviours/  (ValidationBehaviour)
+│   │   ├── Common/Exceptions/  (NotFoundException, ValidationException)
+│   │   ├── Common/Models/      (PaginatedList)
+│   │   └── DependencyInjection.cs
+│   │
+│   ├── DHAS.Infrastructure/    ← EF Core + PostgreSQL, Services
+│   │   ├── Persistence/        (ApplicationDbContext, Configurations)
+│   │   ├── Services/           (CurrentUserService)
+│   │   └── DependencyInjection.cs
+│   │
+│   └── DHAS.API/               ← ASP.NET Core Web API
+│       ├── Controllers/        (DevicesController)
+│       ├── Middleware/         (ExceptionHandlingMiddleware)
+│       ├── Program.cs          (JWT, Serilog, Swagger, CORS)
+│       └── appsettings.json
+│
+└── frontend/dhas-web/          ← React + Vite + TailwindCSS
+    ├── src/
+    │   ├── pages/              (Dashboard, Devices, DataMonitor, Login, Settings)
+    │   ├── components/layout/  (MainLayout)
+    │   ├── services/           (api.ts, deviceService.ts)
+    │   ├── store/              (authStore — Zustand + persist)
+    │   └── types/              (Device, DataPoint, DataLog)
+    ├── tailwind.config.js
+    └── vite.config.ts          (proxy → API port 5000)

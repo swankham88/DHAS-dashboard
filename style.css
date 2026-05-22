@@ -141,6 +141,26 @@ header .tagline {
 .run-info a { color: var(--c-accent); text-decoration: none; }
 .run-info a:hover { text-decoration: underline; }
 
+/* ─────────── Project structure (tree) ─────────── */
+.tree {
+  font-family: 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.55;
+  background: #fafbfc;
+  border: 1px solid var(--c-border);
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin: 0;
+  overflow-x: auto;
+  white-space: pre;
+  color: #2d3748;
+  -webkit-font-smoothing: antialiased;
+}
+.tree-annotation {
+  color: var(--c-muted);
+  font-style: italic;
+}
+
 /* ─────────── Features ─────────── */
 .category { margin-bottom: 20px; }
 .category:last-child { margin-bottom: 0; }
