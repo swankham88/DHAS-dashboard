@@ -1,5 +1,5 @@
-Projects\DHAS                                                                           82%
-├── DHAS.sln                                                                            100%
+Projects\DHAS                                                                           
+├── DHAS.sln                                                                          
 ├── docker-compose.yml          ← PostgreSQL + Redis + pgAdmin                          100%
 ├── .gitignore                                                                          100%
 ├── scripts/                                                                            100%
@@ -18,18 +18,18 @@ Projects\DHAS                                                                   
 │   │   ├── Common/Models/      (PaginatedList)                                         80%
 │   │   └── DependencyInjection.cs                                                      100%
 │   │
-│   ├── DHAS.Infrastructure/    ← EF Core + PostgreSQL, Services                        90%
-│   │   ├── Persistence/        (ApplicationDbContext, Configurations)                  90%
-│   │   ├── Services/           (CurrentUserService)                                    80%
+│   ├── DHAS.Infrastructure/    ← EF Core + PostgreSQL, Services                        
+│   │   ├── Persistence/        (ApplicationDbContext, Configurations)                  60%
+│   │   ├── Services/           (CurrentUserService)                                    90%
 │   │   └── DependencyInjection.cs                                                      100%
 │   │
-│   └── DHAS.API/               ← ASP.NET Core Web API                                  85%
+│   └── DHAS.API/               ← ASP.NET Core Web API                                  
 │       ├── Controllers/        (DevicesController)                                     70%
-│       ├── Middleware/         (ExceptionHandlingMiddleware)                           100%
+│       ├── Middleware/         (ExceptionHandlingMiddleware)                           70%
 │       ├── Program.cs          (JWT, Serilog, Swagger, CORS)                           100%
 │       └── appsettings.json                                                            100%
 │
-└── frontend/dhas-web/          ← React + Vite + TailwindCSS                            75%
+└── frontend/dhas-web/          ← React + Vite + TailwindCSS                            
     ├── src/
     │   ├── pages/              (Dashboard, Devices, DataMonitor, Login, Settings)     60%
     │   ├── components/layout/  (MainLayout)                                            80%
