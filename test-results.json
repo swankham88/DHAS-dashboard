@@ -1,10 +1,10 @@
 {
-  "lastRun": "2026-06-10T04:26:58Z",
-  "commit": "65a8acef8bf049914807fb6f1240e5b98be0fa82",
-  "commitShort": "65a8ace",
+  "lastRun": "2026-06-10T04:31:31Z",
+  "commit": "a39b584bcfa32089183b8cbf67eaa30197e6a79c",
+  "commitShort": "a39b584",
   "branch": "master",
-  "passed": 285,
+  "passed": 278,
   "failed": 0,
-  "total": 285,
-  "runUrl": "https://github.com/swankham88/DHAS/actions/runs/27253117382"
+  "total": 278,
+  "runUrl": "https://github.com/swankham88/DHAS/actions/runs/27253273275"
 }
