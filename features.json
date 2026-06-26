@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-22",
+  "updated": "2026-06-26",
   "categories": [
     {
       "name": "Marketplace Integration",
@@ -121,6 +121,39 @@
           "title": "Auto-dispatch to network printer",
           "status": "planned",
           "note": "Phase 2 — adapter API ready, dispatcher layer pending."
+        }
+      ]
+    },
+    {
+      "name": "Pickup / Arrange Shipment",
+      "items": [
+        {
+          "title": "Shopee — Pickup & Drop-off (ship_order)",
+          "status": "done",
+          "date": "2026-06",
+          "note": "'จัดส่งสินค้า' action in the Order detail + Orders table — Drop-off or Pickup via Shopee ship_order. Tracking number returns immediately and the order flips to PROCESSED."
+        },
+        {
+          "title": "Shopee — Auto-pickup background service",
+          "status": "done",
+          "date": "2026-06",
+          "note": "Auto-arranges Pickup for READY_TO_SHIP orders once a WMS Shipped-Completed (status 95) event lands, then flips them to PROCESSED. Opt-in via Shopee:AutoPickup:Enabled."
+        },
+        {
+          "title": "External Pickup API — POST /api/orders/{id}/pickup",
+          "status": "done",
+          "date": "2026-06",
+          "note": "Lets an external system (WMS / ERP) trigger Pickup by internal order id. Marketplace-agnostic — dispatches to the order's own adapter; idempotent on retry."
+        },
+        {
+          "title": "Lazada — Pickup / arrange shipment",
+          "status": "planned",
+          "note": "Lazada fulfilment runs in its own flow; the ship_order adapter is not yet implemented."
+        },
+        {
+          "title": "TikTok — Pickup / arrange shipment",
+          "status": "planned",
+          "note": "ship_order adapter not yet implemented."
         }
       ]
     },
