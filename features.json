@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-22",
+  "updated": "2026-06-29",
   "categories": [
     {
       "name": "Marketplace Integration",
@@ -108,9 +108,10 @@
           "note": "Create → poll READY → download binary PDF. Available on live production after Shopee app go-live."
         },
         {
-          "title": "Lazada — print label via /order/document/get",
-          "status": "blocked",
-          "note": "Waiting on Lazada Open Platform 'Apply Unmask' approval for full PII access."
+          "title": "Lazada — print label (PDF)",
+          "status": "done",
+          "date": "2026-06",
+          "note": "Unmask approved; switched to the AWB PDF endpoint (/order/document/awb/pdf/get) and unwrap its iframe to fetch the real PDF. Works in the UI viewer and the WMS label API."
         },
         {
           "title": "Batch label print (combined PDF)",
@@ -121,6 +122,40 @@
           "title": "Auto-dispatch to network printer",
           "status": "planned",
           "note": "Phase 2 — adapter API ready, dispatcher layer pending."
+        }
+      ]
+    },
+    {
+      "name": "Pickup / Arrange Shipment",
+      "items": [
+        {
+          "title": "Shopee — Pickup & Drop-off (ship_order)",
+          "status": "done",
+          "date": "2026-06",
+          "note": "'จัดส่งสินค้า' action in the Order detail + Orders table — Drop-off or Pickup via Shopee ship_order. Tracking number returns immediately and the order flips to PROCESSED."
+        },
+        {
+          "title": "Shopee — Auto-pickup background service",
+          "status": "done",
+          "date": "2026-06",
+          "note": "Auto-arranges Pickup for READY_TO_SHIP orders once a WMS Shipped-Completed (status 95) event lands, then flips them to PROCESSED. Opt-in via Shopee:AutoPickup:Enabled."
+        },
+        {
+          "title": "External Pickup API — POST /api/orders/{id}/pickup",
+          "status": "done",
+          "date": "2026-06",
+          "note": "Lets an external system (WMS / ERP) trigger Pickup by internal order id. Marketplace-agnostic — dispatches to the order's own adapter; idempotent on retry."
+        },
+        {
+          "title": "TikTok — Pickup (ship_package, Pickup only)",
+          "status": "in-progress",
+          "date": "2026-06",
+          "note": "ShipOrderAsync implemented via packages/{id}/ship (Pickup only; TikTok manages the SEA handover) + จัดส่งสินค้า button for AWAITING_SHIPMENT orders. Pending verification on a live order."
+        },
+        {
+          "title": "Lazada — Pickup / arrange shipment",
+          "status": "planned",
+          "note": "Lazada fulfilment runs in its own flow; the ship_order adapter is not yet implemented."
         }
       ]
     },
