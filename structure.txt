@@ -8,33 +8,33 @@ Projects\DHAS
 ├── src/                                                                                
 │   ├── DHAS.Domain/            ← Entities, Enums, Domain Events                       
 │   │   ├── Common/             (BaseEntity, BaseDomainEvent)                           100%
-│   │   ├── Entities/           (Device, DataPoint, DataLog)                            70%
-│   │   └── Enums/              (DeviceProtocol, DeviceStatus)                          90%
+│   │   ├── Entities/           (Device, DataPoint, DataLog)                            100%
+│   │   └── Enums/              (DeviceProtocol, DeviceStatus)                          100%
 │   │
 │   ├── DHAS.Application/       ← Business Logic, CQRS, MediatR                         
-│   │   ├── Common/Interfaces/  (IApplicationDbContext, ICurrentUserService)            80%
+│   │   ├── Common/Interfaces/  (IApplicationDbContext, ICurrentUserService)            100%
 │   │   ├── Common/Behaviours/  (ValidationBehaviour)                                   100%
-│   │   ├── Common/Exceptions/  (NotFoundException, ValidationException)                80%
-│   │   ├── Common/Models/      (PaginatedList)                                         80%
+│   │   ├── Common/Exceptions/  (NotFoundException, ValidationException)                100%
+│   │   ├── Common/Models/      (PaginatedList)                                         100%
 │   │   └── DependencyInjection.cs                                                      100%
 │   │
 │   ├── DHAS.Infrastructure/    ← EF Core + PostgreSQL, Services                        
-│   │   ├── Persistence/        (ApplicationDbContext, Configurations)                  60%
+│   │   ├── Persistence/        (ApplicationDbContext, Configurations)                  100%
 │   │   ├── Services/           (CurrentUserService)                                    90%
 │   │   └── DependencyInjection.cs                                                      100%
 │   │
 │   └── DHAS.API/               ← ASP.NET Core Web API                                  
-│       ├── Controllers/        (DevicesController)                                     70%
-│       ├── Middleware/         (ExceptionHandlingMiddleware)                           70%
+│       ├── Controllers/        (DevicesController)                                     100%
+│       ├── Middleware/         (ExceptionHandlingMiddleware)                           100%
 │       ├── Program.cs          (JWT, Serilog, Swagger, CORS)                           100%
 │       └── appsettings.json                                                            100%
 │
 └── frontend/dhas-web/          ← React + Vite + TailwindCSS                            
     ├── src/
-    │   ├── pages/              (Dashboard, Devices, DataMonitor, Login, Settings)     60%
-    │   ├── components/layout/  (MainLayout)                                            80%
-    │   ├── services/           (api.ts, deviceService.ts)                              70%
+    │   ├── pages/              (Dashboard, Devices, DataMonitor, Login, Settings)     100%
+    │   ├── components/layout/  (MainLayout)                                            100%
+    │   ├── services/           (api.ts, deviceService.ts)                              100%
     │   ├── store/              (authStore — Zustand + persist)                         100%
-    │   └── types/              (Device, DataPoint, DataLog)                            60%
+    │   └── types/              (Device, DataPoint, DataLog)                            100%
     ├── tailwind.config.js                                                              100%
     └── vite.config.ts          (proxy → API port 5000)                                 100%
