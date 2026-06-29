@@ -112,16 +112,6 @@
           "status": "done",
           "date": "2026-06",
           "note": "Unmask approved; switched to the AWB PDF endpoint (/order/document/awb/pdf/get) and unwrap its iframe to fetch the real PDF. Works in the UI viewer and the WMS label API."
-        },
-        {
-          "title": "Batch label print (combined PDF)",
-          "status": "in-progress",
-          "note": "Backend endpoint ready; UI multi-select pending."
-        },
-        {
-          "title": "Auto-dispatch to network printer",
-          "status": "planned",
-          "note": "Phase 2 — adapter API ready, dispatcher layer pending."
         }
       ]
     },
