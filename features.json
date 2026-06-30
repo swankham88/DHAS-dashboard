@@ -143,10 +143,10 @@
           "note": "Pickup via packages/{id}/ship (Pickup only; TikTok manages the SEA handover) + จัดส่งสินค้า button for AWAITING_SHIPMENT orders. Verified on a live order."
         },
         {
-          "title": "Lazada — Pickup (pack → Ready-To-Ship)",
+          "title": "Lazada — Pickup (pack / assign AWB)",
           "status": "done",
           "date": "2026-06",
-          "note": "Pickup packs a pending order (the marketplace assigns the LEX AWB) then marks it Ready-To-Ship via /order/rts; จัดส่งสินค้า button for PENDING/PACKED orders. Verified on a live order (LEX AWB issued)."
+          "note": "Pickup packs a pending order — the marketplace assigns the LEX AWB and the label is ready to print. Stops after pack per customer requirement (Ready-To-Ship opt-in via Lazada:Pickup:ReadyToShip). จัดส่งสินค้า button for PENDING/PACKED orders. Verified live (LEX AWB issued)."
         }
       ]
     },
