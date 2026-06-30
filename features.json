@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-29",
+  "updated": "2026-06-30",
   "categories": [
     {
       "name": "Marketplace Integration",
@@ -138,15 +138,15 @@
         },
         {
           "title": "TikTok — Pickup (ship_package, Pickup only)",
-          "status": "in-progress",
+          "status": "done",
           "date": "2026-06",
-          "note": "ShipOrderAsync implemented via packages/{id}/ship (Pickup only; TikTok manages the SEA handover) + จัดส่งสินค้า button for AWAITING_SHIPMENT orders. Pending verification on a live order."
+          "note": "Pickup via packages/{id}/ship (Pickup only; TikTok manages the SEA handover) + จัดส่งสินค้า button for AWAITING_SHIPMENT orders. Verified on a live order."
         },
         {
-          "title": "Lazada — Pickup (Ready-To-Ship)",
-          "status": "in-progress",
+          "title": "Lazada — Pickup (pack → Ready-To-Ship)",
+          "status": "done",
           "date": "2026-06",
-          "note": "ShipOrderAsync implemented via /order/rts (Pickup only; LEX collects after RTS) + จัดส่งสินค้า button for PENDING/PACKED orders. Pending verification on a live order."
+          "note": "Pickup packs a pending order (the marketplace assigns the LEX AWB) then marks it Ready-To-Ship via /order/rts; จัดส่งสินค้า button for PENDING/PACKED orders. Verified on a live order (LEX AWB issued)."
         }
       ]
     },
