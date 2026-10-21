@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-30",
+  "updated": "2026-10-21",
   "categories": [
     {
       "name": "Marketplace Integration",
@@ -21,6 +21,12 @@
           "status": "done",
           "date": "2026-05",
           "note": "App approved Online by Shopee (live partner_id 2034541). Production credentials deployed via appsettings.Production.json on the server."
+        },
+        {
+          "title": "Amaze — credentials connect + order sync",
+          "status": "in-progress",
+          "date": "2026-10",
+          "note": "CP Group super app (Ascend Commerce). Connects with integration username/password (no OAuth relay), syncs orders oldest-first via the Open API, prints the waybill PDF. Built against the Seller Platform v1.0.0 spec — awaiting UAT credentials to verify live."
         },
         {
           "title": "LINE Shopping integration",
